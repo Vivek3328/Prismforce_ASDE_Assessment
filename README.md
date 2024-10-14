@@ -64,11 +64,11 @@ Algorithm
    - If Abhimanyu has reached the end (`ind >= k`), return `true` as he has successfully crossed the chakravyuha.
    - If Abhimanyu's power drops below zero at any point, return `false` as he cannot fight anymore.
    - If the current enemy's power exceeds Abhimanyu's remaining power, and he has no skips or recharges left, return `false`.
-   - If Abhimanyu is at positions 3 or 7, and his power is less than the sum of the current enemy's power and half of the previous enemy's power, and he cannot skip or recharge, return `false`.
+   - If Abhimanyu is at circle 3 or 7, and his power is less than the sum of the current enemy's power and half of the previous enemy's power, and he cannot skip or recharge, return `false`.
 
 3. **Recursive Case**:
    - **Use skip**: If skips are available (`skip > 0`), call the recursive function with the next enemy (`ind + 1`), the same power, one less skip (`skip - 1`), and mark the current enemy as skipped (`lastSkipped = 1`).
-   - **Use recharge**: If recharges are available (`recharge > 0`), recharge Abhimanyu back to his initial power (`power`) and call the function again with the same enemy (`ind`), recharged power, one less recharge (`recharge - 1`), and no skip (`lastSkipped = 0`).
+   - **Use recharge**: If recharges are available (`recharge > 0`), recharge Abhimanyu back to his initial power (`power`) and call the function again with the same enemy (`ind`), recharged power, one less recharge (`recharge - 1`).
    - **Fight enemy**: If Abhimanyu's current power is greater than the enemy's power:
      - If the current enemy is at positions 3 or 7, subtract the sum of the current enemy's power and half of the previous enemy's power, and call the function with the next enemy (`ind + 1`).
      - For other positions, simply subtract the current enemy's power and call the function with the next enemy (`ind + 1`).
@@ -83,9 +83,9 @@ Algorithm
 
 ### Time Complexity
 
-The time complexity of this algorithm is approximately `O(k \* initialPower \* skip \* recharge)`, where `k` is the number of circles, `initialPower` is Abhimanyu’s initial power, `skip` is the number of skips, and `recharge` is the number of recharges.
+The time complexity of this algorithm is approximately `O(k*initialPower*skip*recharge)`, where `k` is the number of circles, `initialPower` is Abhimanyu’s initial power, `skip` is the number of skips, and `recharge` is the number of recharges.
 
 ### Space Complexity
 
-The space complexity is `O(k \* initialPower \* skip \* recharge)` due to the use of the 5D DP table
+The space complexity is `O(k*initialPower*skip*recharge)` due to the use of the 5D DP table
 
